@@ -8,7 +8,6 @@ public class ReverseWords {
 	public static void main(String[] args) {
 		String sentence= "salut les loulous ça va";
 		
-		/*
 		String reverseSentence="";
 		String[] listWords= sentence.split(" ");
 		ArrayList<String> reverseListWords= new ArrayList<String>();
@@ -22,12 +21,6 @@ public class ReverseWords {
 		}
 				
 		System.out.println("[" + reverseSentence.trim() + "]");
-		*/
-		
-		// solution de fou codewars
-	    System.out.println(Arrays.stream(sentence.split(" ")).reduce((x, y) -> y+" "+x).get());
-	    
-
 	}
 
 }
