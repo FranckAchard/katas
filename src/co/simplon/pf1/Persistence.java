@@ -1,32 +1,33 @@
 package co.simplon.pf1;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Persistence {
 
 	public static void main (String[] args) {
 
-		int num=0, nbDigit=0;
+		int num=0,  count=0;
 
 		Scanner input= new Scanner(System.in);
 
 		System.out.println("Saisir un entier positif :");
 		num= input.nextInt();
 		input.nextLine();
-		
-		nbDigit= countDigit(num);
-
+	
 		/* 
 		 * 1. décomposer le nombre en digits
 		 * 2. multiplier les digits
 		 * 3. décomposer le résultat en digits
-		 * 3. continuer tant que la multiplication 
+		 * 4. continuer tant que la multiplication donne plus de 1 digit
 		 */
 
-		int[] intArr= sepDigit(num);
+		while (countDigit(num) > 1) {
+			num= multArray(sepDigit(num));
+			System.out.println("count = " + count + " ; num = " + num);
+			++count;
+		}
 		
-		//System.out.println(multArray(intArr));
+		System.out.println("Persistence = " + count);
 		
 		input.close();
 	}
@@ -35,9 +36,7 @@ public class Persistence {
 		return (int)(Math.log10(nb)+1);
 	}
 
-	public static int[] sepDigit(int nb) {
-		//ArrayList<Character> arrChar= new ArrayList<Character>();
-		//Integer intObj= new Integer(nb);
+	public static int[] sepDigit(int nb) {		
 		char[] nbToCharArr= (new Integer(nb)).toString(nb).toCharArray();
 		int[] res=new int[nbToCharArr.length];
 
